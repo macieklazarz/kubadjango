@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Tuz(models.Model):
     nazwa = models.CharField(max_length=100)
-    slug = models.SlugField()
+    # slug = models.SlugField()
     rozmiar = models.TextField()
     waga = models.IntegerField()
     typ = models.TextField()
