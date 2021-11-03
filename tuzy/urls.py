@@ -6,8 +6,9 @@ from django.urls import path
 app_name = 'tuzy'
 
 urlpatterns = [
-    url(r'^$', views.tuzy_lista, name="lista"),
-    url(r'^(?P<slug>[\w-]+)/$', views.tuz, name="tuz"),
+    # url(r'^$', views.tuzy_lista, name="lista"),
+    # url(r'^(?P<slug>[\w-]+)/$', views.tuz, name="tuz"),
+    path('<int:pk>/', views.tuzy_lista, name="tuzy_lista")
 
 
 ]

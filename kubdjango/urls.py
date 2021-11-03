@@ -27,7 +27,8 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.homepage, name="home"),
-    url(r'^tuzy_lista/', include('tuzy.urls')),
+    # url(r'^tuzy_lista/', include('tuzy.urls')),
+    path('tuzy_lista/', include('tuzy.urls', namespace="tuzy_lista")),
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
