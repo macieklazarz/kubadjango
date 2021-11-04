@@ -15,7 +15,7 @@ class Marka(models.Model):
 class Tuz(models.Model):
     nazwa = models.CharField(max_length=100)
     # slug = models.SlugField()
-    # rozmiar = models.TextField()
+    opis = models.TextField()
     # waga = models.IntegerField()
     # typ = models.TextField()
     # date = models.DateTimeField(auto_now_add=True)

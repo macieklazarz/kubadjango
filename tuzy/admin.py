@@ -7,7 +7,7 @@ from uslugi.models import Uslugi
 # Register your models here.
 
 class TuzAdmin(admin.ModelAdmin):
-	list_display = ['nazwa', 'marka', 'foto']
+	list_display = ['nazwa', 'marka', 'foto', 'opis']
 
 	
 admin.site.register(Tuz, TuzAdmin)
