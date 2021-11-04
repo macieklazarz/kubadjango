@@ -1,0 +1,57 @@
+{% load static from static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jakub Wasiak Tuzy</title>
+	<!-- <link rel="stylesheet" href="/static/style.css"> -->
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<!-- <link rel="stylesheet" href="/static/css/fontello.css"> -->
+	<link rel="stylesheet" href="{% static 'css/fontello.css' %}">
+</head>
+<body>
+	<header>
+		<a href="{% url 'home' %}" class="logo"><span>P</span>owrót do strony głównej<span>.</span></a>
+		<!-- <div class="MenuToggle" onclick="toggleMenu();"></div> -->
+<!-- 		<ul class="navigation">
+			<li><a href="#stronaglowna" onclick="toggleMenu();"><div class="zoom"><i class="icon-home"></i></div>Strona główna</a></li>
+			<li><a href="#omnie" onclick="toggleMenu();"><div class="zoom"><i class="icon-male"></i></div>O mnie</a></li>
+			<li><a href="#Menu" onclick="toggleMenu();"><div class="zoom"><i class="icon-camera"></i></div>Galeria</a></li>
+			<li><a href="#oferta" onclick="toggleMenu();"><div class="spin"><i class="icon-cog"></i></div>Oferta</a></li>
+			<li><a href="#contact" onclick="toggleMenu();"><div class="zoom"><i class="icon-mail-alt"></i></div>Kontakt</a></li>
+			<li><a href="#xxx" onclick="toggleMenu();"><div class="spin"><i class="icon-spin3"></i></div>Switch to English</a></li>
+		</ul> -->
+	</header>
+<!-- 	<form class="site-form" action = "{% url 'home' %}" method="post">
+		{% csrf_token %}
+		<input type="submit"  value="Strona główna">
+	</form> -->
+	
+		<section class="stronaglowna" id="stronaglowna">
+		<div class="content">
+			<h2>Twoja wiadomość została wysłana</h2>
+		</div>
+	</section>
+
+	<div class="copyrightText">
+		<p>2021 <a href='#'>Jakub Wasiak Tuzy</a>. &copy</p>
+	</div>
+	
+	<script type="text/javascript">
+		window.addEventListener('scroll', function(){
+			const header = document.querySelector('header');
+			header.classList.toggle("sticky", window.scrollY > 0);
+			});
+			
+			function toggleMenu(){
+			const MenuToggle=document.querySelector('.MenuToggle');
+			const navigation = document.querySelector('.navigation');
+			MenuToggle.classList.toggle('active');
+			navigation.classList.toggle('active');
+			}
+	</script>
+
+</body>
+</html>

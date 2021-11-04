@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^$', views.homepage, name="home"),
     # url(r'^tuzy_lista/', include('tuzy.urls')),
     path('tuzy_lista/', include('tuzy.urls', namespace="tuzy_lista")),
+    path('message_sent/', views.message_sent, name="message_sent"),
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]

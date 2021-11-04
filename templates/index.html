@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{% static 'css/fontello.css' %}">
 </head>
 <body>
+
 	<header>
 		<a href="#" class="logo"><span>t</span>uzownia<span>.</span>pl</a>
 		<div class="MenuToggle" onclick="toggleMenu();"></div>
@@ -19,17 +20,18 @@
 			<li><a href="#stronaglowna" onclick="toggleMenu();"><div class="zoom"><i class="icon-home"></i></div>Strona główna</a></li>
 			<li><a href="#Menu" onclick="toggleMenu();"><div class="zoom"><i class="icon-camera"></i></div>Realizacje</a></li>
 			<li><a href="#oferta" onclick="toggleMenu();"><div class="spin"><i class="icon-cog"></i></div>Tuzy</a></li>
-			<li><a href="#oferta" onclick="toggleMenu();"><div class="spin"><i class="icon-cog"></i></div>Akcesoria</a></li>
-			<li><a href="#uslugi" onclick="toggleMenu();"><div class="spin"><i class="icon-cog"></i></div>Usługi</a></li>
+			<li><a href="#akcesoria" onclick="toggleMenu();"><div class="zoom"><i class="icon-basket"></i></div>Akcesoria</a></li>
+			<li><a href="#uslugi" onclick="toggleMenu();"><div class="zoom"><i class="icon-wrench"></i></div>Usługi</a></li>
 			<li><a href="#contact" onclick="toggleMenu();"><div class="zoom"><i class="icon-mail-alt"></i></div>Kontakt</a></li>
 			<li><a href="#xxx" onclick="toggleMenu();"><div class="spin"><i class="icon-spin3"></i></div>Switch to English</a></li>
 		</ul>
 	</header>
+
+
 	<section class="stronaglowna" id="stronaglowna">
 		<div class="content">
 			<h2>Witaj!</h2>
 			<p>Jesteśmy producentem przednich trzypunktowych układów zawieszenia o udźwigu 0,6T, 1T oraz 3T. Gama dostępnych modeli stale rośnie. </p>
-			<!--<a href="#" class="btn">Our Menu</a> -->
 		</div>
 	</section>
 	
@@ -49,9 +51,7 @@
 				</div>
 			</div>
 			{% endfor %}
-		</div>
-
-		
+		</div>	
 	</section>
 
 		
@@ -71,26 +71,46 @@
 			</a>
 			{% endfor %}
 		</div>
-
 	</section>
 
 
-
-	<section class="uslugi" id="uslugi">
+	<section class="akcesoria" id="akcesoria">
+		<div class="title">
+			<h2 class="titleText"> <span>A</span>kcesoria<span>.</span></h2>
+		</div>
+		{% for akcesoria_entity in akcesoria %}
 		<div class="row">
 			<div class="col50">
-				<h2 class="titleText"><span>O</span> mnie<span>.</span></h2>
-				<p>Nazywam się Jakub Wasiak i zajmuję się produkcją i sprzedażą tuzów. Swoją działalność prowadzę od 2011 roku. Do chwili obecnej sprzedałem ponad 100 maszyn zadowolonym nabywcom. Już dziś możesz zostać jednym z nich!<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, dui sit amet dignissim posuere, sapien erat cursus massa, in suscipit felis elit et massa. Aenean nec metus ac ligula sodales ornare sed eu est. Proin vulputate a odio in pretium. In rutrum ex ullamcorper, fermentum purus convallis, tempus mi. Phasellus eu erat id ipsum suscipit auctor. Pellentesque velit nulla, imperdiet ac massa at, dictum suscipit turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vulputate erat quis neque varius imperdiet. Maecenas lacinia est consequat, mattis mi at, ullamcorper tortor. Phasellus vulputate commodo est nec auctor.
-				<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, dui sit amet dignissim posuere, sapien erat cursus massa, in suscipit felis elit et massa. Aenean nec metus ac ligula sodales ornare sed eu est. Proin vulputate a odio in pretium.
-				</p>
-				</div>
-				<div class="col50">
-					<div class="imgBx">
-						<!--<img src="static/new/images/img1.jpg"> -->
-						<img src="./media/profil2.jpg"> 
-					</div>
+				<h2 class="titleText">{{ akcesoria_entity.nazwa }}</h2>
+				<p>{{ akcesoria_entity.opis }}</p>
+			</div>
+			<div class="col50">
+				<div class="imgBx"> 
+					<img src={{akcesoria_entity.foto.url}}> 
 				</div>
 			</div>
+		</div>
+		{% endfor %}
+	</section>
+
+
+	<section class="uslugi" id="uslugi">
+		<div class="title">
+			<h2 class="titleText"> <span>U</span>sługi<span>.</span></h2>
+		</div>
+		{% for uslugi_entity in uslugi %}
+		<div class="row">
+			<div class="col50">
+				<h2 class="titleText">{{ uslugi_entity.nazwa }}</h2>
+				<p>{{ uslugi_entity.opis }}</p>
+			</div>
+			<div class="col50">
+				<div class="imgBx"> 
+					<img src={{uslugi_entity.foto.url}}> 
+				</div>
+			</div>
+		</div>
+		{% endfor %}
 	</section>
 	
 	<section class="contact" id="contact">
@@ -100,13 +120,11 @@
 		</div>
 		<div class="frame">
 			<div class="contactForm">
-				<form action="submit_form" method="post"> 
+				<form action="{% url 'home'%}" method="post"> 
+					{% csrf_token %}
 					<h3>Wyślij wiadomość:</h3>
 					<div class="inputBox">
-						<input type="text" name="email" placeholder="Twoje imię, mail, numer telefonu...">
-					</div>
-					<div class="inputBox">
-						<input type="text" name="temat" placeholder="Temat">
+						<input type="email" name="email" placeholder="Twoje imię, mail, numer telefonu...">
 					</div>
 					<div class="inputBox">
 						<textarea name="message" placeholder="Wiadomość"></textarea>
@@ -115,7 +133,7 @@
 						<input type="submit" value="Wyślij">
 					</div>
 				</form>
-				<h3>Telefon: 600 001 001</h3></br>
+				<h3>Telefon: 601 973 224</h3></br>
 			</div>
 			
 			
@@ -123,13 +141,19 @@
 				<h3>Media społecznościowe:</h3></br>
 				<div class="socialmedia">
 						<div class="fbicon">
-							<a href="https://www.facebook.com/" target="_blank"><i class="icon-facebook"></i></a>
+							<a href="https://www.facebook.com/przednietuzy/" target="_blank"><i class="icon-facebook"></i></a>
 						</div>
 						<div class="googleicon">
-							<a href="https://www.google.com/" target="_blank"><i class="icon-google"></i></a>
+							<a href="https://www.google.com/maps/place/Biuro+projektowe+Jakub+Wasiak/@50.529216,20.08546,692m/data=!3m1!1e3!4m5!3m4!1s0x0:0xa1e821d83f75ecaa!8m2!3d50.529216!4d20.0854601?hl=pl" target="_blank"><i class="icon-google"></i></a>
 						</div>
 						<div class="yticon">
-							<a href="https://www.youtube.com/" class="tilelink" target="_blank" ><i class="icon-youtube"></i></a>
+							<a href="https://www.youtube.com/" class="tilelink" target="_blank" ><i class="icon-youtube-play"></i></a>
+						</div>
+						<div class="olxicon">
+							<!-- <img src="./media/resized.jpeg"> -->
+							<a href="https://tuzy.olx.pl/#items" class="tilelink" target="_blank">
+								<p class="bordo">O</p><p class="green">L</p><p class="orange">X</p>
+							</a>
 						</div>
 					</div>
 			</div>
@@ -159,5 +183,6 @@
 			navigation.classList.toggle('active');
 			}
 	</script>
+
 </body>
 </html>

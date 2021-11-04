@@ -26,6 +26,13 @@ SECRET_KEY = 'django-insecure-6wv=($9)a$$o%_f7)po!)k1=edzn!(u$kq8n5)8+=l$&(#g!9p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tuzownia@gmail.com'
+EMAIL_HOST_PASSWORD = 'Tuzownia123!@#'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 ALLOWED_HOSTS = ['127.0.0.1','jakubwasiaktuzy.herokuapp.com']
 
 
@@ -41,6 +48,8 @@ INSTALLED_APPS = [
     'kubdjango',
     'tuzy',
     'realizacje',
+    'akcesoria',
+    'uslugi',
 ]
 
 MIDDLEWARE = [

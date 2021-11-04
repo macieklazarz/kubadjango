@@ -174,6 +174,8 @@ header.sticky .navigation li a:hover
 section
 {
 	padding: 100px;
+	padding-bottom: 0px;
+    padding-top: 24px;
 }
 .row
 {
@@ -182,6 +184,7 @@ section
 	display: flex;
 	justify-content: space-between;
 	padding-bottom: 100px;
+	min-height: 500px;
 }
 .row .col50
 {
@@ -222,7 +225,9 @@ section
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	min-height: 700px;
+	min-height: 421px;
+	/*min-height: 404px;*/
+	max-width: 583px;
 }
 .title
 {
@@ -231,6 +236,8 @@ section
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin-bottom: 30px;
+;
 }
 .Menu .content
 {
@@ -487,7 +494,9 @@ section
 }
 a.tilelink
 {
-	display: block;
+	display: flex;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .yticon
@@ -505,6 +514,41 @@ a.tilelink
 {
 	background-color: #eba1a3;
 }
+
+.olxicon
+{
+	background-color: #612cff;
+	width: 23%;
+	text-align: center;
+	font-size: 50px;
+	padding: 10px;
+	border-radius: 8px;
+	margin: 2%;
+	min-width: 92px;
+	display: flex;
+}
+.olxicon:hover
+{
+	background-color: #a1b3da;
+}
+.bordo
+{
+	color: #0d0848;
+	font-weight: bold;
+	font-size: 35px;
+}
+.green
+{
+	color: green;
+	font-weight: bold;
+	font-size: 30px;
+}
+.orange
+{
+	color: #ff661c;
+	font-weight: bold;
+}
+
 .fbicon
 {
 	background-color: #4668b3;
@@ -580,6 +624,11 @@ body .oferta .content a .box
 	min-width: 271px;
 }
 
+body .oferta .content a .box:hover
+{
+	background-color: #c2b3b3;
+}
+
 body .oferta .content a .box .text h3
 {
 	margin-top: 10px;	
@@ -653,7 +702,7 @@ body .oferta .content a .box .text h3
 	.row
 	{
 		flex-direction: column;
-		padding-bottom: 400px;
+		padding-bottom: 200px;
 	}
 	.row .col50
 	{
@@ -664,6 +713,7 @@ body .oferta .content a .box .text h3
 	{
 		height: 300px;
 		margin-top: 20px;
+		text-align: center;
 	}
 	.Menu .content
 	{
@@ -713,6 +763,11 @@ body .oferta .content a .box .text h3
 	.oferta .content .box .imgBx {
 	    width: 100%;
 	    height: 300px;
+	}
+
+	.row .col50 .imgBx img{
+		min-width: 285px;
+		position: sticky;
 	}
 }
 
