@@ -6,17 +6,18 @@ from akcesoria.models import Akcesoria
 from uslugi.models import Uslugi
 from django.core.mail import send_mail
 from django.conf import settings
+from django.core.mail import EmailMessage
 
 def homepage(request):
 	if request.method =='POST':
 		email = request.POST['email']
 		message = request.POST['message']
-		send_mail(email,
-			message,
-			# settings.EMAIL_HOST_USER,
-			email,
-			['tuzownia@gmail.com'],
-			fail_silently=False)
+		print(email)
+		print(message)
+		# send_mail(email,message,settings.EMAIL_HOST_USER,['tuzownia@gmail.com'],fail_silently=False)
+		msg = EmailMessage('Request Callback',
+                       'Here is the message.', to=['tuzownia@gmail.com'])
+		msg.send()
 		return render(request, 'message_sent.html')
 	else:
 
